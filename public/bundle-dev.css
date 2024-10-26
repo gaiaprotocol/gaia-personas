@@ -505,12 +505,18 @@ dialog.modal.structured-modal > header {
 @container (width <= 520px) {
   dialog.modal.structured-modal > header {
     font-size: 22px;
+    padding: 34px 24px;
   }
 }
 dialog.modal.structured-modal > main {
   overflow-y: auto;
   flex-grow: 1;
   padding: 0 34px;
+}
+@container (width <= 520px) {
+  dialog.modal.structured-modal > main {
+    padding: 0 24px;
+  }
 }
 dialog.modal.structured-modal > footer {
   flex-shrink: 0;
@@ -519,6 +525,11 @@ dialog.modal.structured-modal > footer {
   align-items: center;
   justify-content: flex-end;
   gap: 16px;
+}
+@container (width <= 520px) {
+  dialog.modal.structured-modal > footer {
+    padding: 24px;
+  }
 }
 dialog.modal.alert > header > h1 {
   display: flex;
@@ -658,11 +669,6 @@ li.chat-message-list-item > main {
   flex-direction: column;
   gap: 32px;
 }
-@container (width <= 520px) {
-  .wallet-connection-content {
-    padding: 0 24px !important;
-  }
-}
 .wallet-connection-content > section {
   display: flex;
   flex-direction: column;
@@ -676,25 +682,10 @@ li.chat-message-list-item > main {
     font-size: 18px;
   }
 }
-@container (width <= 520px) {
-  .wallet-connection-popup > header {
-    padding: 34px 24px !important;
-  }
-}
-@container (width <= 520px) {
-  .wallet-connection-popup > footer {
-    padding: 24px !important;
-  }
-}
 .wallet-login-content {
   display: flex;
   flex-direction: column;
   gap: 32px;
-}
-@container (width <= 520px) {
-  .wallet-login-content {
-    padding: 0 24px !important;
-  }
 }
 .wallet-login-content > section {
   display: flex;
@@ -707,16 +698,6 @@ li.chat-message-list-item > main {
 @container (width <= 520px) {
   .wallet-login-content > section > h2 {
     font-size: 18px;
-  }
-}
-@container (width <= 520px) {
-  .wallet-login-popup > header {
-    padding: 34px 24px !important;
-  }
-}
-@container (width <= 520px) {
-  .wallet-login-popup > footer {
-    padding: 24px !important;
   }
 }
 /* Gaia Components */
