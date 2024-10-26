@@ -167,6 +167,7 @@ button.contained .material-loading-spinner > svg > circle {
   --page-bg-color: #000;
   --paragraph-text-color: #fff;
   --placeholder-color: rgba(255, 255, 255, 0.5);
+  --link-underline-color: #616161;
   --selection-bg-color: #fff;
   --selection-text-color: #000;
   --overlay-color: rgba(34, 34, 34, 0.6);
@@ -195,7 +196,7 @@ button.contained .material-loading-spinner > svg > circle {
   --dropdown-menu-border-color: rgba(255, 255, 255, 0.1);
   --dropdown-menu-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.1) 0px 4px 6px -4px;
   --dropdown-menu-separator-color: #e3e3e3;
-  --dropdown-menu-item-hover-bg-color: #424242;
+  --dropdown-menu-item-hover-bg-color: #010000;
   --loading-spinner-color: #fff;
   --loading-spinner-on-contained-button-color: #000;
   /* Social Components */
@@ -228,13 +229,22 @@ button.contained .material-loading-spinner > svg > circle {
 body {
   color: var(--paragraph-text-color);
   font-family: Söhne;
-  font-size: 16px;
+  font-size: 18px;
   font-smoothing: antialiased;
   -webkit-font-smoothing: antialiased;
+  container-type: inline-size;
 }
 p {
   line-height: 1.5;
   word-break: break-word;
+}
+p > a {
+  text-decoration: underline;
+  text-decoration-color: var(--link-underline-color);
+  transition: text-decoration-color 0.25s ease;
+}
+p > a:hover {
+  text-decoration-color: currentColor;
 }
 a {
   cursor: pointer;
