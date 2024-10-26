@@ -1,0 +1,38 @@
+.navbar {
+  position: absolute;
+  left    : 30px;
+  top     : 90px;
+
+  display       : flex;
+  flex-direction: column;
+  gap           : 20px;
+
+  @container (width <=@phone-width) {
+    left  : 0;
+    top   : auto;
+    bottom: 0;
+    width : 100%;
+    height: 56px;
+
+    flex-direction : row;
+    justify-content: space-evenly;
+
+    background-color: rgba(8, 8, 8, 0.8);
+    backdrop-filter : blur(24px);
+
+    >.navbar-menu-item>.label {
+      display: none;
+    }
+  }
+
+  >.navbar-menu-item>.label {
+    opacity   : 0;
+    transition: opacity 0.5s ease;
+  }
+
+  &:hover {
+    >.navbar-menu-item>.label {
+      opacity: 1;
+    }
+  }
+}

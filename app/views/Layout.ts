@@ -1,7 +1,7 @@
 import { BodyNode, DomNode, el, View } from "@common-module/app";
 import { LoggedInUserAvatarButton } from "@common-module/social-components";
 import { WalletLoginManager } from "@common-module/wallet-login";
-import Navbar from "../components/Navbar.js";
+import Navbar from "../components/navbar/Navbar.js";
 import PersonaLogo from "../components/PersonaLogo.js";
 
 export default class Layout extends View {
