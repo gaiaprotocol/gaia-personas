@@ -873,7 +873,9 @@ li.chat-message-list-item > main {
 }
 @container (width <= 520px) {
   .layout > header > .buttons > .logged-in-user-avatar-button {
-    display: none;
+    position: fixed;
+    top: -999999px;
+    right: -999999px;
   }
 }
 .layout > main {
