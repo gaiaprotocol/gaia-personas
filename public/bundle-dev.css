@@ -196,7 +196,7 @@ button.contained .material-loading-spinner > svg > circle {
   --dropdown-menu-border-color: rgba(255, 255, 255, 0.1);
   --dropdown-menu-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.1) 0px 4px 6px -4px;
   --dropdown-menu-separator-color: #e3e3e3;
-  --dropdown-menu-item-hover-bg-color: #010000;
+  --dropdown-menu-item-hover-bg-color: #424242;
   --loading-spinner-color: #fff;
   --loading-spinner-on-contained-button-color: #000;
   /* Social Components */
@@ -400,18 +400,28 @@ button.circle.disabled {
 .input > .label {
   font-size: 15.14px;
 }
-.input > input {
+.input > input,
+.input > textarea {
   width: 100%;
-  height: 40px;
-  padding: 0 13.5px;
   border: 1px solid var(--input-border-color);
   border-radius: 4.5px;
 }
-.input > input:focus {
+.input > input:focus,
+.input > textarea:focus {
   border-color: var(--input-focus-border-color);
 }
-.input > input:hover {
+.input > input:hover,
+.input > textarea:hover {
   border-color: var(--input-hover-border-color);
+}
+.input > input {
+  height: 40px;
+  padding: 0 13.5px;
+}
+.input > textarea {
+  height: 100px;
+  padding: 13.5px;
+  resize: vertical;
 }
 .select {
   display: flex;
@@ -442,6 +452,7 @@ button.circle.disabled {
 }
 .dropdown-menu {
   position: fixed;
+  z-index: 1000;
   background-color: var(--dropdown-menu-bg-color);
   border: 1px solid var(--dropdown-menu-border-color);
   border-radius: 16px;
@@ -471,7 +482,8 @@ button.circle.disabled {
   font-size: 14px;
 }
 .dropdown-menu-item > .icon {
-  font-size: 22px;
+  display: flex;
+  align-items: center;
 }
 .dropdown-menu-item:hover {
   background-color: var(--dropdown-menu-item-hover-bg-color);
@@ -701,13 +713,69 @@ li.chat-message-list-item > main {
   }
 }
 /* Gaia Components */
+.persona-form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.persona-form > .avatar {
+  position: relative;
+  height: 120px;
+  display: flex;
+  justify-content: center;
+}
+.persona-form > .avatar > button.edit {
+  position: absolute;
+  top: 0;
+  right: 50%;
+  transform: translate(calc(50% + 45px), 0);
+  min-height: 32px;
+}
+.persona-form > .avatar > button.edit > .icon-container,
+.persona-form > .avatar > button.edit > .icon-container > .icon,
+.persona-form > .avatar > button.edit > .icon-container > .icon > svg {
+  width: 16px;
+  height: 16px;
+}
+.persona-form > .display-name-input-container > .select-name-buttons {
+  margin-top: 10px;
+  display: flex;
+  gap: 10px;
+}
+@container (width <= 520px) {
+  .persona-form > .display-name-input-container > .select-name-buttons {
+    gap: 4px;
+  }
+}
+.persona-form > .display-name-input-container > .select-name-buttons > button {
+  flex-grow: 1;
+  font-size: 14px;
+  padding: 8px 0;
+}
+@container (width <= 520px) {
+  .persona-form > .display-name-input-container > .select-name-buttons > button {
+    font-size: 12px;
+    padding: 6px 0;
+    min-height: auto;
+  }
+}
+.create-persona-form > header {
+  font-size: 32px;
+  text-align: center;
+}
+.create-persona-form > main {
+  padding: 80px 0 72px;
+}
+.create-persona-form > footer > button {
+  width: 100%;
+}
 .persona-logo {
   display: flex;
   align-items: center;
   gap: 10px;
 }
 .navbar {
-  position: absolute;
+  position: fixed;
   left: 30px;
   top: 90px;
   display: flex;
@@ -755,7 +823,17 @@ li.chat-message-list-item > main {
 .navbar-menu-item.active {
   color: #fff;
 }
+.layout {
+  padding-top: 72px;
+}
 .layout > header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background-color: rgba(8, 8, 8, 0.8);
+  backdrop-filter: blur(24px);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -765,5 +843,14 @@ li.chat-message-list-item > main {
   display: flex;
   align-items: center;
   height: 40px;
+}
+.layout > main {
+  max-width: 720px;
+  margin: 0 auto;
+}
+.onboarding-view {
+  max-width: 512px;
+  margin: 40px auto 80px;
+  padding: 0 16px;
 }
 

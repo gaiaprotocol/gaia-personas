@@ -1,3 +1,4 @@
+import { Router } from "@common-module/app";
 import { GaiaProtocolConfig } from "gaiaprotocol";
 
 export interface IAppConfig {
@@ -12,6 +13,8 @@ class AppConfig implements IAppConfig {
   public init(config: IAppConfig) {
     Object.assign(this, config);
 
+    GaiaProtocolConfig.onLoggedInUserPersonaNotFound = () =>
+      Router.go("/onboarding");
     GaiaProtocolConfig.init(config.isDevMode, config.isTestnet);
   }
 }

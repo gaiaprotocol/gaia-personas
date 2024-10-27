@@ -9,6 +9,7 @@ import HomeView from "./views/HomeView.js";
 import Layout from "./views/Layout.js";
 import NotificationsView from "./views/NotificationsView.js";
 import PersonaView from "./views/PersonaView.js";
+import OnboardingView from "./views/OnboardingView.js";
 
 export default async function init(config: IAppConfig) {
   AppConfig.init(config);
@@ -34,6 +35,7 @@ export default async function init(config: IAppConfig) {
 
   Router
     .add("/*", Layout)
+    .add("/onboarding", OnboardingView)
     .add("/", HomeView)
     .add("/notifications", NotificationsView)
     .add("/feed", FeedView)
