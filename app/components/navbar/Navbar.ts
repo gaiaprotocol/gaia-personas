@@ -1,4 +1,6 @@
 import { DomNode, Router } from "@common-module/app";
+import { LoggedInUserAvatarButton } from "@common-module/social-components";
+import { WalletLoginManager } from "@common-module/wallet-login";
 import NavbarMenuItem from "./NavbarMenuItem.js";
 import ChatIcon from "./navbar-icons/ChatIcon.js";
 import ChatIconFilled from "./navbar-icons/ChatIconFilled.js";
@@ -10,8 +12,6 @@ import NotificationsIcon from "./navbar-icons/NotificationsIcon.js";
 import NotificationsIconFilled from "./navbar-icons/NotificationsIconFilled.js";
 
 export default class Navbar extends DomNode {
-  public children: NavbarMenuItem[] = [];
-
   constructor() {
     super(".navbar");
     this.append(
@@ -29,6 +29,7 @@ export default class Navbar extends DomNode {
         "Chat with holders",
         "/chat",
       ),
+      new LoggedInUserAvatarButton(WalletLoginManager),
     );
 
     this.active(location.pathname);
@@ -36,8 +37,10 @@ export default class Navbar extends DomNode {
   }
 
   public active(href: string) {
-    this.children.forEach((child) =>
-      child.href === href ? child.active() : child.inactive()
-    );
+    this.children.forEach((child) => {
+      if (child instanceof NavbarMenuItem) {
+        child.href === href ? child.active() : child.inactive();
+      }
+    });
   }
 }

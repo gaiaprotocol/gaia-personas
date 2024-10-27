@@ -782,6 +782,28 @@ li.chat-message-list-item > main {
   flex-direction: column;
   gap: 20px;
 }
+.navbar > .navbar-menu-item > .label {
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+.navbar:hover > .navbar-menu-item > .label {
+  opacity: 1;
+}
+.navbar > .navbar-menu-item,
+.navbar > .logged-in-user-avatar-button {
+  display: flex;
+  align-items: center;
+}
+.navbar > .logged-in-user-avatar-button {
+  display: none;
+  width: 24px;
+}
+.navbar > .logged-in-user-avatar-button > button,
+.navbar > .logged-in-user-avatar-button > button > .icon-container,
+.navbar > .logged-in-user-avatar-button svg {
+  width: 24px;
+  height: 24px;
+}
 @container (width <= 520px) {
   .navbar {
     left: 0;
@@ -797,13 +819,9 @@ li.chat-message-list-item > main {
   .navbar > .navbar-menu-item > .label {
     display: none;
   }
-}
-.navbar > .navbar-menu-item > .label {
-  opacity: 0;
-  transition: opacity 0.5s ease;
-}
-.navbar:hover > .navbar-menu-item > .label {
-  opacity: 1;
+  .navbar > .logged-in-user-avatar-button {
+    display: flex;
+  }
 }
 .navbar-menu-item {
   display: flex;
@@ -822,6 +840,10 @@ li.chat-message-list-item > main {
 }
 .navbar-menu-item.active {
   color: #fff;
+}
+.navbar-menu-item .icon {
+  display: flex;
+  align-items: center;
 }
 .layout {
   padding-top: 72px;
@@ -848,6 +870,11 @@ li.chat-message-list-item > main {
   display: flex;
   align-items: center;
   height: 40px;
+}
+@container (width <= 520px) {
+  .layout > header > .buttons > .logged-in-user-avatar-button {
+    display: none;
+  }
 }
 .layout > main {
   max-width: 720px;

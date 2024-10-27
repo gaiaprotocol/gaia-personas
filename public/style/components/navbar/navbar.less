@@ -7,6 +7,35 @@
   flex-direction: column;
   gap           : 20px;
 
+  >.navbar-menu-item>.label {
+    opacity   : 0;
+    transition: opacity 0.5s ease;
+  }
+
+  &:hover {
+    >.navbar-menu-item>.label {
+      opacity: 1;
+    }
+  }
+
+  >.navbar-menu-item,
+  >.logged-in-user-avatar-button {
+    display    : flex;
+    align-items: center;
+  }
+
+  >.logged-in-user-avatar-button {
+    display: none;
+    width  : 24px;
+
+    >button,
+    >button>.icon-container,
+    svg {
+      width : 24px;
+      height: 24px;
+    }
+  }
+
   @container (width <=@phone-width) {
     left  : 0;
     top   : auto;
@@ -23,16 +52,9 @@
     >.navbar-menu-item>.label {
       display: none;
     }
-  }
 
-  >.navbar-menu-item>.label {
-    opacity   : 0;
-    transition: opacity 0.5s ease;
-  }
-
-  &:hover {
-    >.navbar-menu-item>.label {
-      opacity: 1;
+    >.logged-in-user-avatar-button {
+      display: flex;
     }
   }
 }

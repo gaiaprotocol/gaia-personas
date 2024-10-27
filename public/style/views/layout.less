@@ -25,6 +25,12 @@
       align-items: center;
       height     : 40px;
     }
+
+    @container (width <=@phone-width) {
+      >.buttons>.logged-in-user-avatar-button {
+        display: none;
+      }
+    }
   }
 
   >main {
