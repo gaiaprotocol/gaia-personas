@@ -826,6 +826,11 @@ li.chat-message-list-item > main {
 .layout {
   padding-top: 72px;
 }
+@container (width <= 520px) {
+  .layout {
+    padding-bottom: 56px;
+  }
+}
 .layout > header {
   position: fixed;
   top: 0;

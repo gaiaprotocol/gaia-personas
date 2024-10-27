@@ -1,6 +1,10 @@
 .layout {
   padding-top: 72px;
 
+  @container (width <=@phone-width) {
+    padding-bottom: 56px;
+  }
+
   >header {
     position: fixed;
     top     : 0;
