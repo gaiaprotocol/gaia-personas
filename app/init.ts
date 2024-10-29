@@ -17,10 +17,9 @@ export default async function init(config: IAppConfig) {
   SPAInitializer.init();
 
   UniversalWalletConnector.init({
-    name: "Persona",
-    icon: "https://persona.gaia.cc/images/icon-192x192.png",
-    description:
-      "Create your Persona with your own story, and build a community of supporters who believe in you.",
+    name: "Gaia Personas",
+    icon: "https://personas.gaia.cc/images/icon-192x192.png",
+    description: "Web3 persona service by Gaia Protocol",
     walletConnectProjectId: "7538ca3cec20504b06a3338d0e53b028",
     chains: {
       "base-sepolia": {
