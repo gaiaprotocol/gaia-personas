@@ -1,4 +1,6 @@
 import { Router } from "@common-module/app";
+import { WalletLoginConfig } from "@common-module/wallet-login";
+import { base, baseSepolia } from "@wagmi/core/chains";
 import { GaiaProtocolConfig } from "gaiaprotocol";
 
 export interface IAppConfig {
@@ -15,7 +17,17 @@ class AppConfig implements IAppConfig {
 
     GaiaProtocolConfig.onLoggedInUserPersonaNotFound = () =>
       Router.go("/onboarding");
-    GaiaProtocolConfig.init(config.isDevMode, config.isTestnet);
+
+    GaiaProtocolConfig.initOnlyForGaiaProtocol(
+      config.isDevMode,
+      config.isTestnet,
+    );
+
+    WalletLoginConfig.init({
+      chains: [base, baseSepolia] as any,
+      supabaseConnector: GaiaProtocolConfig.supabaseConnector,
+      walletConnectProjectId: "7538ca3cec20504b06a3338d0e53b028",
+    });
   }
 }
 

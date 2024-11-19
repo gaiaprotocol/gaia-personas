@@ -7,10 +7,11 @@ export default class OnboardingView extends View {
   constructor() {
     super();
 
-    if (WalletLoginManager.loggedInAddress) {
+    const walletAddress = WalletLoginManager.getLoggedInAddress();
+    if (walletAddress) {
       Layout.content = this.container = el(
         ".onboarding-view",
-        new CreatePersonaForm(WalletLoginManager.loggedInAddress),
+        new CreatePersonaForm(walletAddress),
       );
 
       this.container.subscribe(

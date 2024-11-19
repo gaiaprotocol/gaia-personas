@@ -22,12 +22,12 @@ export default class NavbarMenuItem extends DomNode<HTMLAnchorElement> {
   }
 
   public active() {
-    this.iconContainer.empty().append(this.iconFilled.clone());
+    this.iconContainer.clear().append(this.iconFilled.clone());
     this.addClass("active");
   }
 
   public inactive() {
-    this.iconContainer.empty().append(this.icon.clone());
+    this.iconContainer.clear().append(this.icon.clone());
     this.removeClass("active");
   }
 }
