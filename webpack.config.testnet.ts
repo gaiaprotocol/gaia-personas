@@ -34,12 +34,18 @@ const config: webpack.Configuration = {
     extensionAlias: {
       ".js": [".js", ".ts"],
     },
+    fallback: {
+      buffer: require.resolve("buffer"),
+    },
   },
   output: {
     filename: "[name]-testnet.js",
     path: path.resolve("public"),
   },
   plugins: [
+    new webpack.ProvidePlugin({
+      Buffer: ["buffer", "Buffer"],
+    }),
     new MiniCssExtractPlugin({
       filename: "bundle-testnet.css",
     }),

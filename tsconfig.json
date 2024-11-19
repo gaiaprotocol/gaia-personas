@@ -78,5 +78,13 @@
     "legacy",
     "public",
     "server"
-  ]
+  ],
+  "ts-node": {
+    "transpileOnly": true,
+    "moduleTypes": {
+      "webpack.config.dev.ts": "cjs",
+      "webpack.config.testnet.ts": "cjs",
+      "webpack.config.mainnet.ts": "cjs",
+    }
+  }
 }
