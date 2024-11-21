@@ -96,6 +96,7 @@
       "dependencies": [
         "npm:@types/node@^22.7.5",
         "npm:@types/webpack@^5.28.5",
+        "npm:buffer@^6.0.3",
         "npm:css-loader@^7.1.2",
         "npm:gaiaprotocol@~0.2.3",
         "npm:less-loader@^12.2.0",

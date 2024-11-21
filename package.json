@@ -6,6 +6,7 @@
   },
   "type": "module",
   "dependencies": {
+    "@gaiaprotocol/ui-preset": "^0.0.2",
     "gaiaprotocol": "^0.2.3"
   },
   "devDependencies": {
