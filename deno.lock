@@ -94,6 +94,7 @@
   "workspace": {
     "packageJson": {
       "dependencies": [
+        "npm:@gaiaprotocol/ui-preset@^0.0.2",
         "npm:@types/node@^22.7.5",
         "npm:@types/webpack@^5.28.5",
         "npm:buffer@^6.0.3",
