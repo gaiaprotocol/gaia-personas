@@ -1970,6 +1970,10 @@ li.chat-message-list-item > main {
     min-height: auto;
   }
 }
+.persona-form > .display-name-input-container > .select-name-buttons > button.selected {
+  background-color: var(--contained-button-bg-color);
+  color: var(--contained-button-text-color);
+}
 .create-persona-form > header {
   font-size: 32px;
   text-align: center;
@@ -1979,6 +1983,11 @@ li.chat-message-list-item > main {
 }
 .create-persona-form > footer > button {
   width: 100%;
+}
+.name-selector-modal > main {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 .persona-logo {
   display: flex;
