@@ -22,7 +22,7 @@ export default class Layout extends View {
       el(
         "header",
         new PersonaLogo(),
-        el(".buttons", new LoggedInUserAvatarButton(WalletLoginManager)),
+        el(".button-container", new LoggedInUserAvatarButton(WalletLoginManager)),
       ),
       this.contentContainer = el("main"),
       new Navbar(),
