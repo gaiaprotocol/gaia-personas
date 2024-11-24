@@ -11,7 +11,7 @@ export default class NavbarMenuItem extends DomNode<HTMLAnchorElement> {
   ) {
     super("a.navbar-menu-item");
     this.append(
-      this.iconContainer = el(".icon-container", icon),
+      this.iconContainer = el(".icon-container", icon.clone()),
       el(".label", label),
     );
     this.htmlElement.href = href;

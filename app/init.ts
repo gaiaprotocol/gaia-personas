@@ -2,6 +2,7 @@ import { Router, SPAInitializer } from "@common-module/app";
 import { WalletLoginManager } from "@common-module/wallet-login";
 import AppConfig, { IAppConfig } from "./AppConfig.js";
 import ChatWithHoldersView from "./views/ChatWithHoldersView.js";
+import EditPersonaView from "./views/EditPersonaView.js";
 import FeedView from "./views/FeedView.js";
 import HomeView from "./views/HomeView.js";
 import Layout from "./views/Layout.js";
@@ -24,5 +25,6 @@ export default async function init(config: IAppConfig) {
     .add([
       "/0x:walletAddress([a-fA-F0-9]{4,40})",
       "/:name([^:.]+).:tld(eth|base.eth|gaia)",
-    ], PersonaView);
+    ], PersonaView)
+    .add("/edit-persona", EditPersonaView);
 }
