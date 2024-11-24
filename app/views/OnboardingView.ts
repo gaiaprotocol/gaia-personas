@@ -11,7 +11,9 @@ export default class OnboardingView extends View {
     if (walletAddress) {
       Layout.content = this.container = el(
         ".onboarding-view",
-        new CreatePersonaForm(),
+        new CreatePersonaForm((data) =>
+          Router.go(`/${WalletLoginManager.getLoggedInAddress()}`, data)
+        ),
       );
 
       this.container.subscribe(
