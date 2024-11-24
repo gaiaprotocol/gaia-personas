@@ -11,7 +11,7 @@ export default class OnboardingView extends View {
     if (walletAddress) {
       Layout.content = this.container = el(
         ".onboarding-view",
-        new CreatePersonaForm(walletAddress),
+        new CreatePersonaForm(),
       );
 
       this.container.subscribe(
