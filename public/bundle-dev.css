@@ -1930,6 +1930,13 @@ li.chat-message-list-item > main {
   flex-direction: column;
   gap: 12px;
 }
+.trade-asset-button > .title {
+  display: flex;
+  align-items: center;
+}
+.trade-asset-button > .title > .icon.ethereum {
+  height: 16px;
+}
 .persona-avatar {
   position: relative;
   background-color: var(--avatar-bg-color);
@@ -1955,13 +1962,10 @@ li.chat-message-list-item > main {
 }
 .persona-form > .avatar-container {
   position: relative;
+  width: 120px;
   height: 120px;
   display: flex;
   justify-content: center;
-}
-.persona-form > .avatar-container > .avatar {
-  width: 120px;
-  height: 120px;
 }
 .persona-form > .avatar-container > button.edit {
   position: absolute;
@@ -2027,10 +2031,24 @@ li.chat-message-list-item > main {
   flex-direction: column;
   gap: 12px;
 }
+.persona-display {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
 .persona-display > header {
   display: flex;
-  align-items: center;
   gap: 16px;
+}
+.persona-display > header > .avatar-container {
+  width: 100px;
+  height: 100px;
+}
+@container (width <= 520px) {
+  .persona-display > header > .avatar-container {
+    width: 72px;
+    height: 72px;
+  }
 }
 .persona-display > header > .content {
   flex-grow: 1;
@@ -2053,6 +2071,10 @@ li.chat-message-list-item > main {
 }
 .persona-display > header > .content > .user-info > .name-and-wallet-address > .wallet-address {
   font-size: 14px;
+}
+.persona-display > header > .content > .user-info > .pc-button-container {
+  display: flex;
+  gap: 8px;
 }
 @container (width <= 520px) {
   .persona-display > header > .content > .user-info > .pc-button-container {
@@ -2193,5 +2215,11 @@ li.chat-message-list-item > main {
   max-width: 512px;
   margin: 40px auto 80px;
   padding: 0 16px;
+}
+@container (width <= 752px) {
+  .persona-view > .persona-display > header,
+  .persona-view > .persona-display > .mobile-button-container {
+    padding: 0 16px;
+  }
 }
 
