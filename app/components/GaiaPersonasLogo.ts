@@ -1,8 +1,8 @@
 import { DomNode, Router } from "@common-module/app";
 
-export default class PersonaLogo extends DomNode {
+export default class GaiaPersonasLogo extends DomNode {
   constructor() {
-    super("a.persona-logo");
+    super("a.gaia-personas-logo");
     this.onDom("click", () => Router.go("/"));
 
     const imageHeight = 28;

@@ -58,8 +58,8 @@ class AppConfig implements IAppConfig {
 
     WalletLoginConfig.init({
       chains: [base, baseSepolia] as any,
-      supabaseConnector: GaiaProtocolConfig.supabaseConnector,
       walletConnectProjectId: "7538ca3cec20504b06a3338d0e53b028",
+      supabaseConnector: GaiaProtocolConfig.supabaseConnector,
     });
   }
 }
