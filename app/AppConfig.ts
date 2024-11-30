@@ -40,20 +40,22 @@ class AppConfig implements IAppConfig {
     };
 
     SocialCompConfig.getLoggedInUserMenu = async (menu, user) => {
-      return new DropdownMenuGroup(
-        new DropdownMenuItem({
-          icon: new ProfileIcon(),
-          label: "My Persona",
-          onClick: () => {
-            Router.go(
-              user.isFallback
-                ? "/onboarding"
-                : `/${user.name.endsWith(".gaia") ? user.name : user.id}`,
-            );
-            menu.remove();
-          },
-        }),
-      );
+      return [
+        new DropdownMenuGroup(
+          new DropdownMenuItem({
+            icon: new ProfileIcon(),
+            label: "My Persona",
+            onClick: () => {
+              Router.go(
+                user.isFallback
+                  ? "/onboarding"
+                  : `/${user.name.endsWith(".gaia") ? user.name : user.id}`,
+              );
+              menu.remove();
+            },
+          }),
+        ),
+      ];
     };
 
     WalletLoginConfig.init({
