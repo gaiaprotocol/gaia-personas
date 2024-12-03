@@ -15,7 +15,6 @@ import ProfileImageSourceSelectMenu from "./ProfileImageSourceSelectMenu.js";
 import UserNFTSelectorModal from "./UserNFTSelectorModal.js";
 
 interface AvatarData {
-  walletAddress: string;
   profileImageUrl?: string;
   profileThumbnailUrl?: string;
   nftAddress?: string;
@@ -28,7 +27,7 @@ export default class PersonaAvatarInput extends DomNode<HTMLDivElement, {
   private invisibleFileInput: InvisibleFileInput;
   private avatar: PersonaAvatar;
 
-  constructor(private data: AvatarData) {
+  constructor(walletAddress: string, private data: AvatarData) {
     super(".persona-avatar-input");
     this.append(
       this.invisibleFileInput = new InvisibleFileInput({
@@ -38,7 +37,7 @@ export default class PersonaAvatarInput extends DomNode<HTMLDivElement, {
         },
       }),
       this.avatar = new PersonaAvatar({
-        id: data.walletAddress,
+        id: walletAddress,
         avatarUrl: data.profileImageUrl,
         isNftAvatar: data.nftAddress !== undefined &&
           data.nftTokenId !== undefined,
@@ -99,7 +98,6 @@ export default class PersonaAvatarInput extends DomNode<HTMLDivElement, {
     ]);
 
     this.data = {
-      walletAddress: this.data.walletAddress,
       profileImageUrl: optimizedImageUrl,
       profileThumbnailUrl: thumbnailImageUrl,
     };
@@ -113,7 +111,6 @@ export default class PersonaAvatarInput extends DomNode<HTMLDivElement, {
 
   private setNFTAsAvatar(nft: OpenSeaNFTData) {
     this.data = {
-      walletAddress: this.data.walletAddress,
       profileImageUrl: nft.image_url,
       profileThumbnailUrl: nft.display_image_url,
       nftAddress: nft.contract,
@@ -127,7 +124,7 @@ export default class PersonaAvatarInput extends DomNode<HTMLDivElement, {
   }
 
   private clearAvatar() {
-    this.data = { walletAddress: this.data.walletAddress };
+    this.data = {};
     this.emit("dataChanged", this.data);
     this.avatar.clearImage();
   }

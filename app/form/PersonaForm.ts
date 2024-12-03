@@ -19,8 +19,7 @@ export default class PersonaForm extends DomNode<HTMLDivElement, {
     super(".persona-form");
 
     this.append(
-      this.avatarInput = new PersonaAvatarInput({
-        walletAddress: data.wallet_address,
+      this.avatarInput = new PersonaAvatarInput(data.wallet_address, {
         profileImageUrl: data.profile_image_url,
         profileThumbnailUrl: data.profile_thumbnail_url,
         nftAddress: data.profile_nft_address,

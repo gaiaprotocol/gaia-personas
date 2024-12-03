@@ -10,7 +10,7 @@ import {
   PersonaEntity,
   PersonaRepository,
 } from "gaiaprotocol";
-import PersonaForm from "../forms/PersonaForm.js";
+import PersonaForm from "../form/PersonaForm.js";
 import Layout from "./Layout.js";
 
 export default class EditPersonaView extends View {

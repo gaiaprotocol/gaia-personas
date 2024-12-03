@@ -2,7 +2,7 @@ import { el, Router, View } from "@common-module/app";
 import { Button, ButtonType } from "@common-module/app-components";
 import { WalletLoginManager } from "@common-module/wallet-login";
 import { GaiaProtocolConfig } from "gaiaprotocol";
-import PersonaForm from "../forms/PersonaForm.js";
+import PersonaForm from "../form/PersonaForm.js";
 import Layout from "./Layout.js";
 
 export default class OnboardingView extends View {
