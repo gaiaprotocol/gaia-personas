@@ -1,6 +1,6 @@
 import { el, Router, View } from "@common-module/app";
 import { WalletLoginManager } from "@common-module/wallet-login";
-import { CreatePersonaForm } from "gaiaprotocol";
+import CreatePersonaForm from "../components/forms/CreatePersonaForm.js";
 import Layout from "./Layout.js";
 
 export default class OnboardingView extends View {

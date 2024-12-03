@@ -1,11 +1,8 @@
 import { el, Router, View } from "@common-module/app";
 import { AppCompConfig } from "@common-module/app-components";
 import { WalletLoginManager } from "@common-module/wallet-login";
-import {
-  EditPersonaForm,
-  PersonaEntity,
-  PersonaRepository,
-} from "gaiaprotocol";
+import { PersonaEntity, PersonaRepository } from "gaiaprotocol";
+import EditPersonaForm from "../components/forms/EditPersonaForm.js";
 import Layout from "./Layout.js";
 
 export default class EditPersonaView extends View {
