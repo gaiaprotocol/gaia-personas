@@ -1,8 +1,8 @@
 import { BodyNode, DomNode, el, View } from "@common-module/app";
 import { LoggedInUserAvatarButton } from "@common-module/social-components";
 import { WalletLoginManager } from "@common-module/wallet-login";
-import Navbar from "../components/navbar/Navbar.js";
-import PersonaLogo from "../components/GaiaPersonasLogo.js";
+import Navbar from "../navbar/Navbar.js";
+import PersonaLogo from "../GaiaPersonasLogo.js";
 
 export default class Layout extends View {
   private static current: Layout;
