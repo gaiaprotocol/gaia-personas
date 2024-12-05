@@ -38,7 +38,7 @@ export default class PersonaForm extends DomNode<HTMLDivElement, {
         this.nameInput = new Input({
           label: "Display name",
           placeholder: "Enter display name",
-          value: this.data?.name,
+          value: this.data.name,
           onChange: (newValue) => {
             this.data.name = newValue;
             this.updateNameSource(null);
@@ -51,12 +51,12 @@ export default class PersonaForm extends DomNode<HTMLDivElement, {
         el(
           ".select-name-buttons",
           this.ensNameButton = new Button(
-            `.ens-name${this.data?.is_ens_name ? ".selected" : ""}`,
+            `.ens-name${this.data.is_ens_name ? ".selected" : ""}`,
             {
               type: ButtonType.Outlined,
               title: "Use ENS Name",
               onClick: () => {
-                if (!this.data?.is_ens_name) {
+                if (!this.data.is_ens_name) {
                   new ENSNameSelectorModal((name) =>
                     this.selectName(name, "ENS")
                   );
@@ -65,12 +65,12 @@ export default class PersonaForm extends DomNode<HTMLDivElement, {
             },
           ),
           this.basenameButton = new Button(
-            `.basename${this.data?.is_basename ? ".selected" : ""}`,
+            `.basename${this.data.is_basename ? ".selected" : ""}`,
             {
               type: ButtonType.Outlined,
               title: "Use Basename",
               onClick: () => {
-                if (!this.data?.is_basename) {
+                if (!this.data.is_basename) {
                   new BasenameSelectorModal((name) =>
                     this.selectName(name, "Basename")
                   );
@@ -79,12 +79,12 @@ export default class PersonaForm extends DomNode<HTMLDivElement, {
             },
           ),
           this.gaiaNameButton = new Button(
-            `.gaia-name${this.data?.is_gaia_name ? ".selected" : ""}`,
+            `.gaia-name${this.data.is_gaia_name ? ".selected" : ""}`,
             {
               type: ButtonType.Outlined,
               title: "Use Gaia Name",
               onClick: () => {
-                if (!this.data?.is_gaia_name) {
+                if (!this.data.is_gaia_name) {
                   new GaiaNameSelectorModal((name) =>
                     this.selectName(name, "Gaia")
                   );
@@ -100,7 +100,7 @@ export default class PersonaForm extends DomNode<HTMLDivElement, {
           label: "Bio",
           placeholder: "Something about yourself",
           multiline: true,
-          value: this.data?.bio,
+          value: this.data.bio,
           onChange: (newValue) => {
             this.data.bio = newValue;
             this.emit("dataChanged", this.data);
