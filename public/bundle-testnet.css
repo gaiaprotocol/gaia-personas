@@ -125,14 +125,12 @@ meter {
   font-weight: 700;
   font-display: swap;
 }
-/*
 @font-face {
   font-family: 'Trajan Pro';
-  font-style : normal;
+  font-style: normal;
   font-weight: normal;
-  src        : url("https://common-resources.gaia.cc/fonts/trajan-pro.woff") format("woff");
+  src: url("https://common-resources.gaia.cc/fonts/trajan-pro.woff") format("woff");
 }
-*/
 @keyframes rotate-material-loading-spinner {
   0% {
     transform: rotate(0deg);
@@ -1274,6 +1272,10 @@ a.button {
     padding: 8px 16px;
   }
 }
+button:has(>.icon-container),
+a.button:has(>.icon-container) {
+  padding-left: 14px;
+}
 button > .icon-container,
 a.button > .icon-container {
   flex-shrink: 0;
@@ -1766,6 +1768,17 @@ li.chat-message-list-item > main {
 .chat-message-edit-form > form > .actions > button > .icon-container > .icon {
   font-size: 20px;
 }
+.logged-in-user-avatar-button {
+  position: relative;
+  min-width: 32px;
+  min-height: 32px;
+}
+.logged-in-user-avatar-button > .loading-spinner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
 .logged-in-user-avatar-button > button.avatar {
   padding: 0;
   transition: none;
@@ -1807,6 +1820,10 @@ li.chat-message-list-item > main {
   transition: opacity 0.2s;
   font-size: 14px;
 }
+.logged-in-user-avatar-menu > header > .user-info > .avatar {
+  width: 32px;
+  height: 32px;
+}
 .logged-in-user-avatar-menu > header > .user-info:hover {
   opacity: 0.8;
 }
@@ -1817,6 +1834,8 @@ li.chat-message-list-item > main {
 .wallet-avatar {
   display: flex;
   align-items: center;
+  width: 100%;
+  height: 100%;
 }
 .non-modal-dialog-container:has(.wallet-connection-modal),
 .non-modal-dialog-container:has(.wallet-login-modal) {
@@ -1868,6 +1887,59 @@ li.chat-message-list-item > main {
   }
 }
 /* Gaia Components */
+.logo-input {
+  position: relative;
+  width: 120px;
+  height: 120px;
+}
+.logo-input > .loading-spinner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.logo-input > .logo-display {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background-color: #333;
+  background-size: cover;
+  background-position: center;
+}
+.logo-input > .logo-display > .icon.upload {
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.logo-input > .logo-display:hover {
+  filter: brightness(0.8);
+  cursor: pointer;
+}
+.logo-input > .logo-display:hover > .icon.upload {
+  display: block;
+}
+.logo-input > .logo-display.drag-hover {
+  filter: brightness(0.8);
+  border: 2px dashed #666;
+}
+.logo-input > .logo-display.drag-hover > .icon.upload {
+  display: block;
+}
+.logo-input > button.clear {
+  position: absolute;
+  top: 0;
+  right: 50%;
+  transform: translate(calc(50% + 45px), 0);
+  min-height: 32px;
+}
+.logo-input > button.clear > .icon-container,
+.logo-input > button.clear > .icon-container > .icon,
+.logo-input > button.clear > .icon-container > .icon > svg {
+  width: 16px;
+  height: 16px;
+}
 .nft-list {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -1930,6 +2002,13 @@ li.chat-message-list-item > main {
   flex-direction: column;
   gap: 12px;
 }
+.trade-asset-button > .title {
+  display: flex;
+  align-items: center;
+}
+.trade-asset-button > .title > .icon.ethereum {
+  height: 16px;
+}
 .persona-avatar {
   position: relative;
   background-color: var(--avatar-bg-color);
@@ -1948,89 +2027,24 @@ li.chat-message-list-item > main {
   left: 50%;
   transform: translate(-50%, -50%);
 }
-.persona-form {
+.persona-display {
   display: flex;
   flex-direction: column;
-  gap: 24px;
-}
-.persona-form > .avatar-container {
-  position: relative;
-  height: 120px;
-  display: flex;
-  justify-content: center;
-}
-.persona-form > .avatar-container > .avatar {
-  width: 120px;
-  height: 120px;
-}
-.persona-form > .avatar-container > button.edit {
-  position: absolute;
-  top: 0;
-  right: 50%;
-  transform: translate(calc(50% + 45px), 0);
-  min-height: 32px;
-}
-.persona-form > .avatar-container > button.edit > .icon-container,
-.persona-form > .avatar-container > button.edit > .icon-container > .icon,
-.persona-form > .avatar-container > button.edit > .icon-container > .icon > svg {
-  width: 16px;
-  height: 16px;
-}
-.persona-form > .display-name-input-container > .select-name-buttons {
-  margin-top: 10px;
-  display: flex;
-  gap: 10px;
-}
-@container (width <= 520px) {
-  .persona-form > .display-name-input-container > .select-name-buttons {
-    gap: 4px;
-  }
-}
-.persona-form > .display-name-input-container > .select-name-buttons > button {
-  flex-grow: 1;
-  font-size: 14px;
-  padding: 8px 0;
-}
-@container (width <= 520px) {
-  .persona-form > .display-name-input-container > .select-name-buttons > button {
-    font-size: 12px;
-    padding: 6px 0;
-    min-height: auto;
-  }
-}
-.persona-form > .display-name-input-container > .select-name-buttons > button.selected {
-  background-color: var(--contained-button-bg-color);
-  color: var(--contained-button-text-color);
-}
-.create-persona-form > header {
-  font-size: 32px;
-  text-align: center;
-}
-.create-persona-form > main {
-  padding: 80px 0 72px;
-}
-.create-persona-form > footer > button {
-  width: 100%;
-}
-.edit-persona-form > header {
-  font-size: 32px;
-  text-align: center;
-}
-.edit-persona-form > main {
-  padding: 80px 0 72px;
-}
-.edit-persona-form > footer > button {
-  width: 100%;
-}
-.name-selector-modal > main {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
+  gap: 16px;
 }
 .persona-display > header {
   display: flex;
-  align-items: center;
   gap: 16px;
+}
+.persona-display > header > .avatar-container {
+  width: 100px;
+  height: 100px;
+}
+@container (width <= 520px) {
+  .persona-display > header > .avatar-container {
+    width: 72px;
+    height: 72px;
+  }
 }
 .persona-display > header > .content {
   flex-grow: 1;
@@ -2054,6 +2068,10 @@ li.chat-message-list-item > main {
 .persona-display > header > .content > .user-info > .name-and-wallet-address > .wallet-address {
   font-size: 14px;
 }
+.persona-display > header > .content > .user-info > .pc-button-container {
+  display: flex;
+  gap: 8px;
+}
 @container (width <= 520px) {
   .persona-display > header > .content > .user-info > .pc-button-container {
     display: none;
@@ -2071,15 +2089,12 @@ li.chat-message-list-item > main {
     flex-grow: 1;
   }
 }
-.persona-logo {
+.gaia-personas-logo {
   display: flex;
   align-items: center;
   gap: 10px;
 }
 .navbar {
-  position: fixed;
-  left: 30px;
-  top: 90px;
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -2147,6 +2162,69 @@ li.chat-message-list-item > main {
   display: flex;
   align-items: center;
 }
+.persona-avatar-input {
+  position: relative;
+  width: 120px;
+  height: 120px;
+}
+.persona-avatar-input > .loading-spinner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.persona-avatar-input > button.edit {
+  position: absolute;
+  top: 0;
+  right: 50%;
+  transform: translate(calc(50% + 45px), 0);
+  min-height: 32px;
+}
+.persona-avatar-input > button.edit > .icon-container,
+.persona-avatar-input > button.edit > .icon-container > .icon,
+.persona-avatar-input > button.edit > .icon-container > .icon > svg {
+  width: 16px;
+  height: 16px;
+}
+.persona-form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.persona-form > .persona-avatar-input {
+  margin: 0 auto;
+}
+.persona-form > .display-name-input-container > .select-name-buttons {
+  margin-top: 10px;
+  display: flex;
+  gap: 10px;
+}
+@container (width <= 520px) {
+  .persona-form > .display-name-input-container > .select-name-buttons {
+    gap: 4px;
+  }
+}
+.persona-form > .display-name-input-container > .select-name-buttons > button {
+  flex-grow: 1;
+  font-size: 14px;
+  padding: 8px 0;
+}
+@container (width <= 520px) {
+  .persona-form > .display-name-input-container > .select-name-buttons > button {
+    font-size: 12px;
+    padding: 6px 0;
+    min-height: auto;
+  }
+}
+.persona-form > .display-name-input-container > .select-name-buttons > button.selected {
+  background-color: var(--contained-button-bg-color);
+  color: var(--contained-button-text-color);
+}
+.name-selector-modal > main {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
 .layout {
   padding-top: 72px;
 }
@@ -2168,7 +2246,7 @@ li.chat-message-list-item > main {
   justify-content: space-between;
   padding: 16px 24px;
 }
-.layout > header > .persona-logo {
+.layout > header > .logo {
   display: flex;
   align-items: center;
   height: 40px;
@@ -2184,14 +2262,45 @@ li.chat-message-list-item > main {
   max-width: 720px;
   margin: 0 auto;
 }
+.layout > .navbar {
+  position: fixed;
+  left: 30px;
+  top: 90px;
+}
 .onboarding-view {
   max-width: 512px;
   margin: 40px auto 80px;
   padding: 0 16px;
 }
+.onboarding-view > header {
+  font-size: 32px;
+  text-align: center;
+}
+.onboarding-view > main {
+  padding: 80px 0 72px;
+}
+.onboarding-view > footer > button {
+  width: 100%;
+}
 .edit-persona-view {
   max-width: 512px;
   margin: 40px auto 80px;
   padding: 0 16px;
+}
+.edit-persona-view > header {
+  font-size: 32px;
+  text-align: center;
+}
+.edit-persona-view > main {
+  padding: 80px 0 72px;
+}
+.edit-persona-view > footer > button {
+  width: 100%;
+}
+@container (width <= 752px) {
+  .persona-view > .persona-display > header,
+  .persona-view > .persona-display > .mobile-button-container {
+    padding: 0 16px;
+  }
 }
 
