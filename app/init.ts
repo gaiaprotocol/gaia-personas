@@ -29,6 +29,9 @@ export default async function init(config: IAppConfig) {
       "/:name([^:.]+).:tld(eth|base.eth|gaia)",
     ], PersonaView)
     .add("/write", WritePostView)
-    .add("/post/:id", PostView)
+    .add([
+      "/0x:walletAddress([a-fA-F0-9]{4,40})/post/:id",
+      "/:name([^:.]+).:tld(eth|base.eth|gaia)/post/:id",
+    ], PostView)
     .add("/edit-persona", EditPersonaView);
 }

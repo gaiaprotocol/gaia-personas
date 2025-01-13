@@ -10,12 +10,12 @@ export default class PersonaView extends View {
     Layout.content = this.container = el(".persona-view");
   }
 
-  public async changeData(data: { walletAddress: string } | PersonaEntity) {
-    const walletAddress = "walletAddress" in data
-      ? `0x${data.walletAddress}`
-      : data.wallet_address;
-
-    delete (data as any).walletAddress;
+  public async changeData(
+    data:
+      | { walletAddress?: string; name?: string; tld?: string }
+      | PersonaEntity,
+  ) {
+    this.container.clear();
 
     const loadingSpinner = new AppCompConfig.LoadingSpinner().appendTo(
       this.container,
@@ -23,7 +23,11 @@ export default class PersonaView extends View {
 
     const persona = (data as PersonaEntity).created_at
       ? data as PersonaEntity
-      : await PersonaRepository.fetchPersona(walletAddress);
+      : ("walletAddress" in data
+        ? await PersonaRepository.fetchPersona(`0x${data.walletAddress}`)
+        : await PersonaRepository.fetchPersonaByName(
+          `${data.name}.${(data as any).tld}`,
+        ));
 
     loadingSpinner.remove();
 

@@ -40,6 +40,7 @@ export default class PersonaForm extends DomNode<HTMLDivElement, {
           placeholder: "Enter display name",
           value: this.data.name,
           onChange: (newValue) => {
+            console.log(newValue);
             this.data.name = newValue;
             this.updateNameSource(null);
             this.emit("dataChanged", this.data);
@@ -123,8 +124,8 @@ export default class PersonaForm extends DomNode<HTMLDivElement, {
     this.updateNameSource(null);
     this.emit("dataChanged", this.data);
 
-    this.nameInput.value = "";
     this.nameInput.readOnly = false;
+    this.nameInput.value = "";
 
     this.updateButtonSelection();
   }
@@ -134,8 +135,8 @@ export default class PersonaForm extends DomNode<HTMLDivElement, {
     this.updateNameSource(source);
     this.emit("dataChanged", this.data);
 
-    this.nameInput.value = name;
     this.nameInput.readOnly = true;
+    this.nameInput.value = name;
 
     this.updateButtonSelection();
   }

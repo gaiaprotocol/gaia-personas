@@ -1,6 +1,6 @@
 import { el, Router, View } from "@common-module/app";
 import { Button, ButtonType } from "@common-module/app-components";
-import { PostForm } from "@common-module/social-components";
+import { PostForm, SocialCompConfig } from "@common-module/social-components";
 import { WalletLoginManager } from "@common-module/wallet-login";
 import { PersonaPostRepository } from "gaiaprotocol";
 import Layout from "./Layout.js";
@@ -33,6 +33,13 @@ export default class WritePostView extends View {
       data.title,
       data.content,
     );
-    Router.go(`/post/${postId}`);
+
+    const walletAddress = WalletLoginManager.getLoggedInAddress()!;
+    const user = await SocialCompConfig.fetchUser(walletAddress);
+    const walletAddressOrName = user.name.includes(".")
+      ? user.name
+      : walletAddress;
+
+    Router.go(`/${walletAddressOrName}/post/${postId}`);
   }
 }

@@ -5,6 +5,7 @@ import {
   PersonaPostEntity,
   PersonaPostRepository,
   PersonaPostUtils,
+  PersonaRepository,
 } from "gaiaprotocol";
 import Layout from "./Layout.js";
 
@@ -14,16 +15,28 @@ export default class PostView extends View {
     Layout.content = this.container = el(".post-view");
   }
 
-  public async changeData(data: { id: string } | PersonaPostEntity) {
+  public async changeData(
+    data:
+      | { walletAddress?: string; name?: string; tld?: string; id: string }
+      | PersonaPostEntity,
+  ) {
+    this.container.clear();
+
     const id = typeof data.id === "string" ? parseInt(data.id) : data.id;
 
     const loadingSpinner = new AppCompConfig.LoadingSpinner().appendTo(
       this.container,
     );
 
+    const personaOwner = "walletAddress" in data
+      ? `0x${data.walletAddress}`
+      : await PersonaRepository.fetchWalletAddressByName(
+        `${(data as any).name}.${(data as any).tld}`,
+      ) ?? "";
+
     const post = (data as PersonaPostEntity).created_at
       ? data as PersonaPostEntity
-      : await PersonaPostRepository.fetchPost(id);
+      : await PersonaPostRepository.fetchPost(personaOwner, id);
 
     loadingSpinner.remove();
 
