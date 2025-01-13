@@ -20,7 +20,7 @@ const config: webpack.Configuration = {
   },
   entry: {
     "bundle": "./app/mainnet.ts",
-    __less: "./public/style/main.less",
+    __less: "./style/main.less",
   },
   module: {
     rules: [

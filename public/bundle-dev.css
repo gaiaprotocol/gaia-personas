@@ -110,9 +110,9 @@ meter {
 ::-webkit-details-marker {
     display: none;
 }
-/*!*********************************************************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/less-loader/dist/cjs.js!./public/style/main.less ***!
-  \*********************************************************************************************************************************************/
+/*!**************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/less-loader/dist/cjs.js!./style/main.less ***!
+  \**************************************************************************************************************************************/
 @font-face {
   font-family: Söhne;
   src: url("https://common-resources.gaia.cc/fonts/soehne.woff2") format("woff2");
@@ -2687,5 +2687,9 @@ li.chat-content-list-item.temp {
   .persona-view > .persona-display > .mobile-button-container {
     padding: 0 16px;
   }
+}
+.write-post-view > header {
+  font-size: 32px;
+  text-align: center;
 }
 

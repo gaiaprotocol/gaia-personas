@@ -5,7 +5,7 @@ import webpack from "webpack";
 const config: webpack.Configuration = {
   entry: {
     "bundle": "./app/testnet.ts",
-    __less: "./public/style/main.less",
+    __less: "./style/main.less",
   },
   module: {
     rules: [
