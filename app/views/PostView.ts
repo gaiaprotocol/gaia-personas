@@ -1,6 +1,11 @@
 import { el, View } from "@common-module/app";
 import { AppCompConfig } from "@common-module/app-components";
-import { PersonaPostEntity, PersonaPostRepository } from "gaiaprotocol";
+import { PostDisplay } from "@common-module/social-components";
+import {
+  PersonaPostEntity,
+  PersonaPostRepository,
+  PersonaPostUtils,
+} from "gaiaprotocol";
 import Layout from "./Layout.js";
 
 export default class PostView extends View {
@@ -16,17 +21,16 @@ export default class PostView extends View {
       this.container,
     );
 
-    const persona = (data as PersonaPostEntity).created_at
+    const post = (data as PersonaPostEntity).created_at
       ? data as PersonaPostEntity
       : await PersonaPostRepository.fetchPost(id);
 
     loadingSpinner.remove();
 
-    if (!persona) this.container.append(el(".no-post", "Post not found"));
+    if (!post) this.container.append(el(".no-post", "Post not found"));
     else {
-      console.log(persona);
       this.container.append(
-        //TODO:
+        new PostDisplay(PersonaPostUtils.convertPersonaPostToSocialPost(post)),
       );
     }
   }
