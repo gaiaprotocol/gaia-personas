@@ -2015,6 +2015,11 @@ ul.chat-content-list {
 li.chat-content-list-item.temp {
   opacity: 0.5;
 }
+.post-form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
 /* Wallet Components */
 .wallet-avatar {
   display: flex;
@@ -2691,5 +2696,15 @@ li.chat-content-list-item.temp {
 .write-post-view > header {
   font-size: 32px;
   text-align: center;
+}
+.write-post-view > main {
+  padding: 72px 0 72px;
+}
+.write-post-view > footer {
+  display: flex;
+  justify-content: flex-end;
+}
+.write-post-view > footer > button.post {
+  width: 120px;
 }
 
