@@ -9,6 +9,7 @@ import Layout from "./views/Layout.js";
 import NotificationsView from "./views/NotificationsView.js";
 import OnboardingView from "./views/OnboardingView.js";
 import PersonaView from "./views/PersonaView.js";
+import PostView from "./views/PostView.js";
 import WritePostView from "./views/WritePostView.js";
 
 export default async function init(config: IAppConfig) {
@@ -28,5 +29,6 @@ export default async function init(config: IAppConfig) {
       "/:name([^:.]+).:tld(eth|base.eth|gaia)",
     ], PersonaView)
     .add("/write", WritePostView)
+    .add("/post/:id", PostView)
     .add("/edit-persona", EditPersonaView);
 }
