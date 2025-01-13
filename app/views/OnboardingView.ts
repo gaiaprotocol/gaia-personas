@@ -1,5 +1,6 @@
 import { el, Router, View } from "@common-module/app";
 import { Button, ButtonType } from "@common-module/app-components";
+import { SocialCompConfig } from "@common-module/social-components";
 import { WalletLoginManager } from "@common-module/wallet-login";
 import { GaiaProtocolConfig } from "gaiaprotocol";
 import PersonaForm from "../form/PersonaForm.js";
@@ -51,6 +52,9 @@ export default class OnboardingView extends View {
       "save-persona",
       data,
     );
+
+    // refetch user to get the updated data
+    await SocialCompConfig.fetchUser(data.wallet_address);
 
     data.created_at = new Date().toISOString();
 

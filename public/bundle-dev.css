@@ -1157,6 +1157,13 @@ button.contained .material-loading-spinner > svg > circle {
   --snackbar-bg-color: var(--page-bg-color);
   --snackbar-text-color: #fff;
   --snackbar-line-color: var(--line-color);
+  --file-tree-node-hover-bg-color: rgba(255, 255, 255, 0.12);
+  --file-tree-node-selected-bg-color: #16385b;
+  --file-tree-node-selected-border-color: #3376cd;
+  --checkbox-border-color: #4e4e4e;
+  --checkbox-hover-border-color: #8c8c8c;
+  --checkbox-checked-bg-color: #fff;
+  --checkbox-checkmark-color: #000;
   /* Social Components */
   --chat-message-form-bg-color: #2f2f2f;
   --avatar-bg-color: #252527;
@@ -1549,6 +1556,51 @@ a.button.circle.disabled {
   -webkit-appearance: none;
   margin: 0;
 }
+.checkbox {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  cursor: pointer;
+  -webkit-user-select: none;
+  user-select: none;
+}
+@media (pointer: fine) {
+  .checkbox:hover > input {
+    border-color: var(--checkbox-hover-border-color);
+  }
+}
+.checkbox:active > input {
+  border-color: var(--checkbox-hover-border-color);
+}
+.checkbox > input {
+  position: relative;
+  height: 24px;
+  width: 24px;
+  border: 2px solid var(--checkbox-border-color);
+  border-radius: 4px;
+  transition: border-color 0.2s linear;
+}
+.checkbox > input:after {
+  display: none;
+  content: "";
+  position: absolute;
+  left: 6px;
+  top: 2px;
+  width: 8px;
+  height: 12px;
+  border: solid var(--checkbox-checkmark-color);
+  border-width: 0 2px 2px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+.checkbox > input:checked {
+  background-color: var(--checkbox-checked-bg-color);
+  border-color: var(--checkbox-checked-bg-color);
+}
+.checkbox > input:checked:after {
+  display: block;
+}
 .dropdown-menu {
   position: fixed;
   z-index: 1000;
@@ -1746,6 +1798,53 @@ dialog.modal.quantity-input-dialog > main {
 .tab.selected {
   mix-blend-mode: difference;
 }
+.file-tree {
+  display: flex;
+  flex-direction: column;
+}
+.file-tree-node {
+  display: flex;
+  flex-direction: column;
+}
+.file-tree-node > main {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  padding: 4px 8px;
+}
+.file-tree-node > main > .icon-container > img {
+  display: block;
+}
+@media (pointer: fine) {
+  .file-tree-node > main:hover {
+    background-color: var(--file-tree-node-hover-bg-color);
+  }
+}
+.file-tree-node > main:active {
+  background-color: var(--file-tree-node-hover-bg-color);
+}
+.file-tree-node > .children-container {
+  display: none;
+  flex-direction: column;
+  margin-left: 20px;
+}
+.file-tree-node.expanded > .children-container {
+  display: flex;
+}
+.file-tree-node > .file-name-input {
+  margin-left: 20px;
+}
+.file-tree-node.selected > main {
+  background-color: var(--file-tree-node-selected-bg-color);
+  border: 1px solid var(--file-tree-node-selected-border-color);
+  padding: 3px 7px;
+}
+.file-name-input {
+  background-color: var(--file-tree-node-selected-bg-color);
+  border: 1px solid var(--file-tree-node-selected-border-color);
+  padding: 3px 7px;
+}
 .icon.svg {
   display: flex;
   align-items: center;
@@ -1895,6 +1994,7 @@ li.chat-message-list-item > .sender {
   display: flex;
   gap: 8px;
   align-items: center;
+  min-height: 32px;
 }
 li.chat-message-list-item > .sender > .avatar {
   width: 32px;
@@ -2242,6 +2342,35 @@ li.chat-content-list-item.temp {
 .trade-material-modal > main > .tab-content.hidden {
   display: none;
 }
+.trade-material-modal > footer {
+  padding: 0 34px 24px 34px;
+}
+@container (width <= 520px) {
+  .trade-material-modal > footer {
+    padding: 0 24px 24px 24px;
+  }
+}
+.trade-material-modal > footer > .powered-by {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  color: #b4b4b4;
+  font-size: 14px;
+}
+.trade-material-modal > footer > .powered-by > a {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  text-decoration: underline;
+  text-decoration-color: var(--link-underline-color);
+  transition: text-decoration-color 0.25s ease;
+}
+.trade-material-modal > footer > .powered-by > a:hover {
+  text-decoration-color: currentColor;
+}
+.trade-material-modal > footer > .powered-by > a > img {
+  height: 16px;
+}
 .tab-content.trade-material {
   display: flex;
   flex-direction: column;
@@ -2492,6 +2621,16 @@ li.chat-content-list-item.temp {
   display: flex;
   align-items: center;
   height: 40px;
+}
+.layout > header > .button-container {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+.layout > header > .button-container > button {
+  width: 32px;
+  min-height: 32px;
+  padding: 0 8px;
 }
 @container (width <= 520px) {
   .layout > header > .button-container > .logged-in-user-avatar-button {

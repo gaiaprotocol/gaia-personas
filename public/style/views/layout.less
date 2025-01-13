@@ -26,6 +26,18 @@
       height     : 40px;
     }
 
+    >.button-container {
+      display    : flex;
+      gap        : 16px;
+      align-items: center;
+
+      >button {
+        width     : 32px;
+        min-height: 32px;
+        padding   : 0 8px;
+      }
+    }
+
     @container (width <=@phone-width) {
       >.button-container>.logged-in-user-avatar-button {
         position: fixed;

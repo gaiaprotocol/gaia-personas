@@ -9,6 +9,7 @@ import Layout from "./views/Layout.js";
 import NotificationsView from "./views/NotificationsView.js";
 import OnboardingView from "./views/OnboardingView.js";
 import PersonaView from "./views/PersonaView.js";
+import WritePostView from "./views/WritePostView.js";
 
 export default async function init(config: IAppConfig) {
   AppConfig.init(config);
@@ -26,5 +27,6 @@ export default async function init(config: IAppConfig) {
       "/0x:walletAddress([a-fA-F0-9]{4,40})",
       "/:name([^:.]+).:tld(eth|base.eth|gaia)",
     ], PersonaView)
+    .add("/write", WritePostView)
     .add("/edit-persona", EditPersonaView);
 }
