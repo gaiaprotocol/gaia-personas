@@ -29,6 +29,10 @@ export default class WritePostView extends View {
 
   private async savePost(): Promise<void> {
     const data = this.form.getData();
-    await PersonaPostRepository.writePost(data.title, data.content);
+    const postId = await PersonaPostRepository.writePost(
+      data.title,
+      data.content,
+    );
+    Router.go(`/post/${postId}`);
   }
 }
