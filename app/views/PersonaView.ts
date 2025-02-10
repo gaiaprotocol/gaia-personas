@@ -36,8 +36,7 @@ export default class PersonaView extends View {
     if (!persona) this.container.append(el(".no-persona", "No persona found"));
     else {
       this.container.append(
-        new PersonaDisplay({
-          persona,
+        new PersonaDisplay(persona, {
           showEditButton:
             persona.wallet_address === WalletLoginManager.getLoggedInAddress(),
           onEditClick: () => Router.go("/edit-persona", persona),

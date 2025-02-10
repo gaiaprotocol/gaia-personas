@@ -39,6 +39,9 @@ export default class PersonaForm extends DomNode<HTMLDivElement, {
           label: "Display name",
           placeholder: "Enter display name",
           value: this.data.name,
+          readOnly:
+            !!(this.data.is_ens_name || this.data.is_basename ||
+              this.data.is_gaia_name),
           onChange: (newValue) => {
             this.data.name = newValue;
             this.updateNameSource(null);
