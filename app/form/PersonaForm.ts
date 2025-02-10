@@ -40,7 +40,6 @@ export default class PersonaForm extends DomNode<HTMLDivElement, {
           placeholder: "Enter display name",
           value: this.data.name,
           onChange: (newValue) => {
-            console.log(newValue);
             this.data.name = newValue;
             this.updateNameSource(null);
             this.emit("dataChanged", this.data);
@@ -61,6 +60,8 @@ export default class PersonaForm extends DomNode<HTMLDivElement, {
                   new ENSNameSelectorModal((name) =>
                     this.selectName(name, "ENS")
                   );
+                } else {
+                  this.clearName();
                 }
               },
             },
@@ -75,6 +76,8 @@ export default class PersonaForm extends DomNode<HTMLDivElement, {
                   new BasenameSelectorModal((name) =>
                     this.selectName(name, "Basename")
                   );
+                } else {
+                  this.clearName();
                 }
               },
             },
@@ -89,6 +92,8 @@ export default class PersonaForm extends DomNode<HTMLDivElement, {
                   new GaiaNameSelectorModal((name) =>
                     this.selectName(name, "Gaia")
                   );
+                } else {
+                  this.clearName();
                 }
               },
             },
@@ -145,6 +150,8 @@ export default class PersonaForm extends DomNode<HTMLDivElement, {
     this.data.is_ens_name = source === "ENS" ? true : undefined;
     this.data.is_basename = source === "Basename" ? true : undefined;
     this.data.is_gaia_name = source === "Gaia" ? true : undefined;
+
+    this.updateButtonSelection();
   }
 
   private updateButtonSelection() {

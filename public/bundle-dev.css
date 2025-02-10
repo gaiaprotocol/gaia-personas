@@ -2601,6 +2601,10 @@ li.chat-content-list-item.temp {
   flex-direction: column;
   gap: 12px;
 }
+.name-selector-modal > main > .name-display > .loading-spinner {
+  width: 32px;
+  height: 32px;
+}
 .layout {
   padding-top: 72px;
 }

@@ -3,7 +3,7 @@ import { AppCompConfig } from "@common-module/app-components";
 import {
   PersonaPostEntity,
   PersonaPostRepository,
-  PersonaRepository
+  PersonaRepository,
 } from "gaiaprotocol";
 import Layout from "./Layout.js";
 

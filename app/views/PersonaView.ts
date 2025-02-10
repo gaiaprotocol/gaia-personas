@@ -29,6 +29,8 @@ export default class PersonaView extends View {
           `${decodeURIComponent(data.name!)}.${(data as any).tld}`,
         ));
 
+    delete (data as any).walletAddress;
+
     loadingSpinner.remove();
 
     if (!persona) this.container.append(el(".no-persona", "No persona found"));

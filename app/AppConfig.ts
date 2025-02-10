@@ -26,10 +26,7 @@ class AppConfig implements IAppConfig {
     GaiaProtocolConfig.onLoggedInUserPersonaNotFound = () =>
       Router.go("/onboarding");
 
-    GaiaProtocolConfig.initOnlyForGaiaProtocol(
-      config.isDevMode,
-      config.isTestnet,
-    );
+    GaiaProtocolConfig.initForGodMode(config.isDevMode, config.isTestnet);
 
     SocialCompConfig.goLoggedInUserProfile = async (user) => {
       Router.go(
