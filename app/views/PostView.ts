@@ -1,11 +1,9 @@
 import { el, View } from "@common-module/app";
 import { AppCompConfig } from "@common-module/app-components";
-import { PostDisplay } from "@common-module/social-components";
 import {
   PersonaPostEntity,
   PersonaPostRepository,
-  PersonaPostUtils,
-  PersonaRepository,
+  PersonaRepository
 } from "gaiaprotocol";
 import Layout from "./Layout.js";
 
@@ -43,7 +41,7 @@ export default class PostView extends View {
     if (!post) this.container.append(el(".no-post", "Post not found"));
     else {
       this.container.append(
-        new PostDisplay(PersonaPostUtils.convertPersonaPostToSocialPost(post)),
+        //new PostDisplay(PersonaPostUtils.convertPersonaPostToSocialPost(post)),
       );
     }
   }

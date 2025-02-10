@@ -1,19 +1,17 @@
 import { el, Router, View } from "@common-module/app";
 import { Button, ButtonType } from "@common-module/app-components";
-import { PostForm, SocialCompConfig } from "@common-module/social-components";
 import { WalletLoginManager } from "@common-module/wallet-login";
-import { PersonaPostRepository } from "gaiaprotocol";
 import Layout from "./Layout.js";
 
 export default class WritePostView extends View {
-  private form: PostForm;
+  //private form: PostForm;
 
   constructor() {
     super();
     Layout.content = this.container = el(
       ".write-post-view",
       el("header", el("h1", "Write a post")),
-      el("main", this.form = new PostForm()),
+      el("main" /*this.form = new PostForm()*/),
       el(
         "footer",
         new Button(".post", {
@@ -28,7 +26,7 @@ export default class WritePostView extends View {
   }
 
   private async savePost(): Promise<void> {
-    const data = this.form.getData();
+    /*const data = this.form.getData();
     const postId = await PersonaPostRepository.writePost(
       data.title,
       data.content,
@@ -40,6 +38,6 @@ export default class WritePostView extends View {
       ? user.name
       : walletAddress;
 
-    Router.go(`/${walletAddressOrName}/post/${postId}`);
+    Router.go(`/${walletAddressOrName}/post/${postId}`);*/
   }
 }

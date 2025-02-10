@@ -43,7 +43,7 @@ export default class PersonaAvatarInput extends DomNode<HTMLDivElement, {
           data.nftTokenId !== undefined,
       }),
       new Button(".edit", {
-        type: ButtonType.Circle,
+        type: ButtonType.Icon,
         icon: new EditIcon(),
         onClick: (_, event) => this.openSourceSelectMenu(event),
       }),

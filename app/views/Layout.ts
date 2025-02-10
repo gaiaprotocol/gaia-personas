@@ -48,7 +48,7 @@ export default class Layout extends View {
 
     if (WalletLoginManager.isLoggedIn()) {
       this.postButton = new Button({
-        type: ButtonType.Circle,
+        type: ButtonType.Icon,
         icon: new AddIcon(),
         onClick: () => Router.go("/write"),
       }).appendTo(this.buttonContainer, 0);

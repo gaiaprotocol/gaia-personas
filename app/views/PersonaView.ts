@@ -26,7 +26,7 @@ export default class PersonaView extends View {
       : ("walletAddress" in data
         ? await PersonaRepository.fetchPersona(`0x${data.walletAddress}`)
         : await PersonaRepository.fetchPersonaByName(
-          `${data.name}.${(data as any).tld}`,
+          `${decodeURIComponent(data.name!)}.${(data as any).tld}`,
         ));
 
     loadingSpinner.remove();
