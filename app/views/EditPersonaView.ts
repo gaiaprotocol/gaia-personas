@@ -3,13 +3,10 @@ import {
   AppCompConfig,
   Button,
   ButtonType,
+  ErrorDialog,
 } from "@common-module/app-components";
 import { WalletLoginManager } from "@common-module/wallet-login";
-import {
-  GaiaProtocolConfig,
-  PersonaEntity,
-  PersonaRepository,
-} from "gaiaprotocol";
+import { PersonaEntity, PersonaManager, PersonaRepository } from "gaiaprotocol";
 import PersonaForm from "../form/PersonaForm.js";
 import Layout from "./Layout.js";
 
@@ -63,10 +60,16 @@ export default class EditPersonaView extends View {
 
     const data = this.form.data;
 
-    await GaiaProtocolConfig.supabaseConnector.callEdgeFunction(
-      "save-persona",
-      data,
-    );
+    try {
+      await PersonaManager.savePersona(data);
+    } catch (error: any) {
+      console.error(error);
+      new ErrorDialog({
+        title: "Error",
+        message: `Failed to save persona:\n${error.message}`,
+      });
+      throw error;
+    }
 
     data.updated_at = new Date().toISOString();
 
