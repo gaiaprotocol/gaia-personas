@@ -1,20 +1,18 @@
 import { el, Router, View } from "@common-module/app";
 import { Button, ButtonType } from "@common-module/app-components";
+import { PostForm } from "@common-module/social-components";
 import { WalletLoginManager } from "@common-module/wallet-login";
 import Layout from "./Layout.js";
-import { UserImageUploadForm } from "gaiaprotocol";
 
 export default class WritePostView extends View {
-  //private form: PostForm;
+  private form: PostForm;
 
   constructor() {
     super();
     Layout.content = this.container = el(
       ".write-post-view",
       el("header", el("h1", "Write a post")),
-      el("main", /*this.form = new PostForm()*/
-
-        new UserImageUploadForm()
+      el("main", this.form = new PostForm()//new UserImageUploadForm()
       ),
       el(
         "footer",
