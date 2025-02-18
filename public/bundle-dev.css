@@ -1128,7 +1128,7 @@ button.contained .material-loading-spinner > svg > circle {
   --error-alert-icon-color: #f44336;
   --error-alert-text-color: #f4c7c7;
   --text-button-text-color: #fff;
-  --text-button-hover-bg-color: rgba(255, 255, 255, 0.08);
+  --text-button-hover-bg-color: rgba(255, 255, 255, 0.13);
   --text-button-disabled-text-color: rgba(255, 255, 255, 0.26);
   --contained-button-bg-color: #fff;
   --contained-button-text-color: #000;
@@ -1874,6 +1874,52 @@ dialog.modal.quantity-input-dialog > main {
   .snackbar {
     bottom: calc(80px + env(safe-area-inset-bottom));
   }
+}
+/* Markdown Editor Components */
+.rich-text-editor-more-menu > main > .dropdown-menu-group {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(48px, 1fr));
+}
+.rich-text-editor-more-menu > main > .dropdown-menu-group > .dropdown-menu-item {
+  justify-content: center;
+}
+.rich-text-editor {
+  border: 1px solid var(--line-color);
+  border-radius: 16px;
+}
+.rich-text-editor > .toolbar {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--line-color);
+  padding: 4px;
+}
+.rich-text-editor > .toolbar button {
+  background-color: transparent;
+  color: var(--secondary-text-color);
+}
+@media (pointer: fine) {
+  .rich-text-editor > .toolbar button:hover {
+    background-color: var(--text-button-hover-bg-color);
+  }
+}
+.rich-text-editor > .toolbar button:active {
+  background-color: var(--text-button-hover-bg-color);
+}
+.rich-text-editor > .toolbar > .button-container {
+  flex-grow: 1;
+  display: flex;
+  gap: 4px;
+  overflow: hidden;
+}
+.rich-text-editor > .toolbar > .more-button {
+  flex-shrink: 0;
+}
+.rich-text-editor > .toolbar > .more-button.hidden {
+  display: none;
+}
+.rich-text-editor > .editor-area {
+  padding: 16px;
+  min-height: 200px;
 }
 /* Social Components */
 .author-name-display {
