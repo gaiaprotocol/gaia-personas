@@ -21,6 +21,8 @@ export default {
 			});
 		}
 
+		console.log(url.pathname);
+
 		if (url.pathname === "/") {
 			const accessKey = url.searchParams.get("access_key");
 			let html = await (await env.ASSETS.fetch(request)).text();
