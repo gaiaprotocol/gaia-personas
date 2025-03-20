@@ -21,7 +21,11 @@ export default {
 			});
 		}
 
-		console.log(url.pathname);
+		if (url.pathname.startsWith("/api2/")) {
+			return new Response(JSON.stringify({ name: "Cloudflare" }), {
+				headers: { "Content-Type": "application/json" },
+			});
+		}
 
 		if (url.pathname === "/") {
 			const accessKey = url.searchParams.get("access_key");
