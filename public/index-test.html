@@ -9,11 +9,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=Edge, chrome=1">
 
     <link rel="apple-touch-icon" href="/images/icon-192x192.png">
-    <title>(Dev) Gaia Personas</title>
-    <link rel="stylesheet" type="text/css" href="/bundle-dev.css" />
+    <title>Gaia Personas</title>
+    <link rel="stylesheet" type="text/css" href="/bundle.css" />
   </head>
 
   <body>
-    <script src="/bundle-dev.js"></script>
+    <script>
+      const accessKey = location.search.split("access_key=")[1];
+      const script = document.createElement("script");
+      script.src = "/bundle.js?access_key=" + accessKey;
+      document.body.appendChild(script);
+    </script>
   </body>
 </html>
