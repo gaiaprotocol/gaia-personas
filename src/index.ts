@@ -21,11 +21,9 @@ export default {
 			});
 		}
 
-		if (url.pathname.startsWith("/api2/")) {
-			return new Response(JSON.stringify({ name: "Cloudflare" }), {
-				headers: { "Content-Type": "application/json" },
-			});
-		}
+		return new Response(JSON.stringify({ name: url.pathname }), {
+			headers: { "Content-Type": "application/json" },
+		});
 
 		if (url.pathname === "/") {
 			const accessKey = url.searchParams.get("access_key");
