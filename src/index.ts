@@ -22,13 +22,18 @@ export default {
 		}
 
 		if (url.pathname === "/test") {
-			const accessKey = url.searchParams.get("access_key");
-			let html = await (await env.ASSETS.fetch(new Request("/"))).text();
-			html = html.replace(
-				'<script src="/bundle.js" onerror="handleScriptError()"></script>',
-				`<script src="/bundle.js?access_key=${accessKey}" onerror="handleScriptError()"></script>`,
-			);
-			return new Response(html, { headers: { "Content-Type": "text/html" } });
+			try {
+				const accessKey = url.searchParams.get("access_key");
+
+				let html = await (await env.ASSETS.fetch(new Request("/"))).text();
+				html = html.replace(
+					'<script src="/bundle.js" onerror="handleScriptError()"></script>',
+					`<script src="/bundle.js?access_key=${accessKey}" onerror="handleScriptError()"></script>`,
+				);
+				return new Response(html, { headers: { "Content-Type": "text/html" } });
+			} catch (e: any) {
+				return new Response(e.message);
+			}
 		}
 
 		return env.ASSETS.fetch(request);
